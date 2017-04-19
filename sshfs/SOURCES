@@ -1,0 +1,30 @@
+!IF 0
+	sshfs program info build file
+
+!ENDIF
+
+TARGETNAME=sshfs
+TARGETPATH=$(VFS_LIB_TARGET)
+TARGETTYPE=PROGRAM
+
+TARGETLIBS= .\glib-2.0\glib-2.0.lib \
+	.\glib-2.0\gthread-2.0.lib \
+	$(VFS_LIB_PATH)\cxfuse.lib \
+	$(VFS_LIB_PATH)\libfuse.lib \
+	$(VFS_LIB_PATH)\libfs.lib \
+	$(VFS_LIB_PATH)\libgen.lib
+
+LINKLIBS=$(SDK_LIB_PATH)\ntdll.lib \
+	$(SDK_LIB_PATH)\..\..\wnet\*\ws2_32.lib
+
+USE_MSVCRT=0
+386_STDCALL=0
+
+INCLUDES=..\include;..\sys;.\glib-2.0
+C_DEFINES=-D__STDC__=1 -DFUSE_USE_VERSION=26 -DG_OS_WIN32 -DG_PLATFORM_WIN32 
+
+UMTYPE=console
+UMBASE=0x1000000
+
+SOURCES= cache.c sshfs.c
+

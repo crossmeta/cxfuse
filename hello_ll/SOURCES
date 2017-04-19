@@ -1,0 +1,25 @@
+!IF 0
+	hello_ll a lowlevel fuse example program build file 
+
+!ENDIF
+
+TARGETNAME=hello_ll
+TARGETPATH=$(VFS_LIB_TARGET)
+TARGETTYPE=PROGRAM
+
+TARGETLIBS=$(SDK_LIB_PATH)\ntdll.lib
+
+LINKLIBS=$(VFS_LIB_PATH)\libfuse.lib \
+	$(VFS_LIB_PATH)\cxfuse.lib 
+
+USE_MSVCRT=0
+386_STDCALL=0
+
+INCLUDES=..\include;..\sys
+C_DEFINES=-D__STDC__=1
+
+UMTYPE=console
+UMBASE=0x1000000
+
+SOURCES= hello_ll.c
+
