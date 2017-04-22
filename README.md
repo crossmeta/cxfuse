@@ -1,13 +1,12 @@
-
-#Crossmeta FUSE for Windows
+## Crossmeta FUSE for Windows
 
 Crossmeta FUSE (Filesystem in Userspace) is the easiest way to port your favorite FUSE programs to Windows. It is a set of kernel-mode and user mode software that works with Crossmeta Kernel.
 
-####POSIX File system semantics are provided by Crossmeta Kernel
+#### POSIX File system semantics are provided by Crossmeta Kernel
 
 This means symbolic links, hardlinks, mount, etc are available readily for easy integration with your FUSE program.
 
-####Multi-threaded FUSE DLL in userspace 
+#### Multi-threaded FUSE DLL in userspace 
 Hides all the complexity of interfacing with kernel-mode driver interface and provides both the popular APIs
 * Fuse *high-level*, synchronous API 
 * Fuse *low-level*, asynchronous API.
@@ -17,7 +16,7 @@ Fuse mounts are managed in NT kernel namespace and is available to all Windows a
 
 ![FUSE Hello, World Sample](https://cloud.githubusercontent.com/assets/1268351/25301136/29418f40-26ed-11e7-98f9-0dc7b0127070.gif)
 
-##Examples
+## Examples
 FUSE comes with following examples. 
 **hello.c**
 The "Hello World" sample FUSE program shows uses the high-level API by including fuse.h.  It shows how easy it is to get started. Only changes required was manual initialization, since MSVC is compiler being used here.
@@ -41,7 +40,7 @@ Changed to
 The same "Hello World" program using the FUSE Low level API by including `fuse_lowlevel.h`. Once again only changes required was the manual initialzation of `fuse_operations` structure.
 
 
-##Build Environments
+## Build Environments
 
 Uses standard Microsoft Build environment and Compilers. The most convenient way is to use the Microsoft DDK build environment.
 
@@ -54,7 +53,7 @@ Install Microsoft DDK 7.1 and start command shell with DDK build environment set
 	build -cz
 
 
-##Installation
+## Installation
 
 * Download [Crossmeta 2.0] (https://github.com/crossmeta/cxfuse/releases/download/v2.0/crossmeta-fuse-2_0.zip)
 * Extract **crossmeta-fuse\_2\_0.zip** to %TEMP\temp\crossmeta
@@ -122,6 +121,6 @@ To stop the FUSE program, just issue umount /mnt
 	# umount /mnt
 	#
 
-##Summary
+## Summary
 With Crossmeta FUSE for Windows, it is not only easy to port FUSE programs but also the fastest with no or minimal changes required to your existing FUSE program. Also the Crossmeta kernel provides the necessary POSIX APIs without dependency on yet another software package.
 
