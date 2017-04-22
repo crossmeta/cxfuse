@@ -1,7 +1,7 @@
 
 #Crossmeta FUSE for Windows
 
-Crossmeta FUSE (Filesystem in Userspace) is the easiest way to port your favorite FUSE programs to Windows. It is a set of kernel-mode and user mode software that provides:
+Crossmeta FUSE (Filesystem in Userspace) is the easiest way to port your favorite FUSE programs to Windows. It is a set of kernel-mode and user mode software that works with Crossmeta Kernel.
 
 ####POSIX File system semantics are provided by Crossmeta Kernel
 
@@ -15,10 +15,12 @@ Hides all the complexity of interfacing with kernel-mode driver interface and pr
 
 Fuse mounts are managed in NT kernel namespace and is available to all Windows applications.
 
+![FUSE Hello, World Sample](https://cloud.githubusercontent.com/assets/1268351/25301136/29418f40-26ed-11e7-98f9-0dc7b0127070.gif)
+
 ##Examples
 FUSE comes with following examples. 
 **hello.c**
-The "Hello World" sample FUSE program shows uses the high-level API by including fuse.h.  It shows how easy it is to get started. Only changes required was manual initialization 
+The "Hello World" sample FUSE program shows uses the high-level API by including fuse.h.  It shows how easy it is to get started. Only changes required was manual initialization, since MSVC is compiler being used here.
 
 	static struct fuse_operations hello_oper = {
 		.getattr        = hello_getattr,
@@ -121,5 +123,5 @@ To stop the FUSE program, just issue umount /mnt
 	#
 
 ##Summary
-With Crossmeta FUSE for Windows, it is not only easiest to port FUSE programs but also the fastest with no or minimal changes required to your existing FUSE program. Also the Crossmeta kernel provides the necessary POSIX APIs without dependency on yet another software package.
+With Crossmeta FUSE for Windows, it is not only easy to port FUSE programs but also the fastest with no or minimal changes required to your existing FUSE program. Also the Crossmeta kernel provides the necessary POSIX APIs without dependency on yet another software package.
 
