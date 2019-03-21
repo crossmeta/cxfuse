@@ -2,7 +2,7 @@
 
 Crossmeta FUSE (Filesystem in Userspace) is the easiest way to port your favorite FUSE programs to Windows. It is a set of kernel-mode and user mode software that works with Crossmeta Kernel.
 
-#### POSIX File system semantics are provided by Crossmeta Kernel
+#### POSIX File system semantics are provided by ![Crossmeta Kernel](https://github.com/crossmeta/sys/README.md)
 
 This means symbolic links, hardlinks, mount, etc are available readily for easy integration with your FUSE program.
 
@@ -42,7 +42,7 @@ The same "Hello World" program using the FUSE Low level API by including `fuse_l
 
 ## Build Environments
 
-Uses standard Microsoft Build environment and Compilers. The most convenient way is to use the Microsoft DDK build environment.
+Uses standard Microsoft DDK Build environment that comes with compiler and necessary header files.  No need to install Visual Studio Compiler. The most convenient way is to use the Microsoft DDK build environment.
 
 Install Microsoft DDK 7.1 and start command shell with DDK build environment set to i386.
 
