@@ -48,15 +48,17 @@ Install Microsoft DDK 7.1 and start command shell with DDK build environment set
 
 
 	git clone https://github.com/crossmeta/cxfuse.git
-	set VFS_LIB_PATH=c:\users\user\cxfuse\lib
+	set BUILD_ALLOW_COMPILER_WARNINGS=1
+	set VFS_LIB_PATH=c:\users\<user-name>\cxfuse\lib\w2f\free\*
+	set VFS_LIB_TARGET=c:\users\<user-name>\cxfuse\lib\w2f\free
 	cd cxfuse\hello
 	build -cz
 
 
 ## Installation
 
-* Download [Crossmeta 2.0] (https://github.com/crossmeta/cxfuse/releases/download/v2.0/crossmeta-fuse-2_0.zip)
-* Extract **crossmeta-fuse\_2\_0.zip** to %TEMP\temp\crossmeta
+* Download [Crossmeta 2.0] (https://github.com/crossmeta/cxfuse/releases/latest)
+* Extract **crossmeta-fuse\_2\_0\_1.zip** to %TEMP\temp\crossmeta
 * Launch elevated cmd prompt (Administrator) console
 * cd %TEMP%\crossmeta
 * Run setup.exe
