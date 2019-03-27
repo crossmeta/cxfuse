@@ -1,6 +1,6 @@
 ## Crossmeta FUSE for Windows
 
-Crossmeta FUSE (Filesystem in Userspace) is the easiest way to port your favorite FUSE programs to Windows. It is a set of kernel-mode and user mode software that works with Crossmeta Kernel.
+Crossmeta FUSE (Filesystem in Userspace) is the easiest way to port your favorite FUSE programs to Windows. It is a set of kernel-mode and user mode software that works with Crossmeta Kernel.  The project home page is https://crossmeta.io
 
 #### POSIX File system semantics are provided by ![Crossmeta Kernel](https://github.com/crossmeta/sys/README.md)
 
