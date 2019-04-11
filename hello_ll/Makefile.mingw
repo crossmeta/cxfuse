@@ -1,0 +1,36 @@
+#
+# Makefile for building in MINGW32 cross compile
+#
+TARGET = hello_ll
+FUSEDIR=..
+FUSELIBS = $(FUSEDIR)/lib/w2k/free/i386
+#LIBS =  $(FUSELIBS)/libfuse.lib $(FUSELIBS)/cxfuse.dll 
+LIBS =   $(FUSELIBS)/libfuse.lib $(FUSELIBS)/cxfuse.dll  $(FUSELIBS)/libgen.lib
+CC = i686-w64-mingw32-gcc
+CDEFINES = -DWIN32_LEAN_AND_MEAN -D_MSVCRT_ -D_POSIX -D_ALL_SOURCE -D _STAT_DEFINED  -D_TIME_H_ -D_INC_STDLIB -D_IO_H_ -DNO_OLDNAMES -D_REENTRANT
+CINCLUDES=-I $(FUSEDIR)/include  -I $(FUSEDIR) -I $(FUSEDIR)/sys
+CBUILDFLAGS = -O3 -fomit-frame-pointer -ffunction-sections -fdata-sections
+CFLAGS = -g -Wno-multichar $(CDEFINES) $(CINCLUDES)
+
+.PHONY: default all clean
+
+default: $(TARGET)
+all: default
+
+OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
+HEADERS = $(wildcard *.h)
+
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+%.o: %.cc $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $@ $(LIBS)
+
+clean:
+	-rm -f *.o
+	-rm -f $(TARGET)
+	
+

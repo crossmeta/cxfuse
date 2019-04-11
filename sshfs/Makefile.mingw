@@ -1,0 +1,38 @@
+#
+# Makefile for
+#
+TARGET = sshfs.exe
+FUSEDIR = ..
+FUSELIBS = $(FUSEDIR)/lib/w2k/free/i386
+#LIBS =  $(FUSELIBS)/libfuse.lib $(FUSELIBS)/cxfuse.dll 
+LIBS =   -static -pthread -L/usr/i686-w64-mingw32/sys-root/mingw/lib -lglib-2.0 -lintl -liconv $(FUSELIBS)/libfuse.lib $(FUSELIBS)/cxfuse.dll   $(FUSEDIR)/lib/w2k/free/i386/libfs.lib $(FUSEDIR)/lib/w2k/free/i386/libgen.lib -lgdi32 -lntdll -lws2_32 -lwinmm -lole32
+
+HOME=$(shell pwd)
+CC = i686-w64-mingw32-gcc
+CDEFINES = -DWIN32_LEAN_AND_MEAN -D_MSVCRT_ -D_POSIX -D_ALL_SOURCE -D _STAT_DEFINED -DNO_OLDNAMES -D_REENTRANT -D_INC_FCNTL  -D_INC_STDLIB -D_IO_H_  -D_POSIX_C_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE
+CINCLUDES=-I $(FUSEDIR)/include  -I $(FUSEDIR) -I $(FUSEDIR)/sys -mms-bitfields -I/usr/i686-w64-mingw32/sys-root/mingw/include/glib-2.0 -I/usr/i686-w64-mingw32/sys-root/mingw/lib/glib-2.0/include -I/usr/i686-w64-mingw32/sys-root/mingw/include
+CBUILDFLAGS = -O3 -fomit-frame-pointer -ffunction-sections -fdata-sections
+CFLAGS = -static -g -Wno-multichar $(CDEFINES) $(CINCLUDES) 
+
+.PHONY: default all clean
+
+default: $(TARGET)
+all: default
+
+OBJECTS = sshfs.o cache.o
+HEADERS = $(wildcard *.h)
+
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+%.o: %.cc $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $@ $(LIBS)
+
+clean:
+	-rm -f *.o
+	-rm -f $(TARGET)
+	
+
