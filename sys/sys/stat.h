@@ -42,6 +42,7 @@
 #ifndef _SYS_STAT_H_
 #define	_SYS_STAT_H_
 
+#include <sys/types.h>
 #include <sys/time.h>
 
 #ifdef _KERNEL
@@ -278,17 +279,17 @@ _CRTIMP int __cdecl _stati64(const char *, struct _stat *);
 #define _S_IEXEC	0000100 	/* execute/search permission, owner */
 
 __BEGIN_DECLS
-int	chmod __P((const char *, mode_t));
-int	fstat __P((int, struct stat *));
-int	mkdir __P((const char *, mode_t));
-int	mkfifo __P((const char *, mode_t));
+int	__stdcall chmod __P((const char *, mode_t));
+int	__stdcall fstat __P((int, struct stat *));
+int	__stdcall mkdir __P((const char *, mode_t));
+int	__stdcall mkfifo __P((const char *, mode_t));
 int	__stdcall stat __P((const char *, struct stat *));
-mode_t	umask __P((mode_t));
+mode_t	__stdcall umask __P((mode_t));
 #ifndef _POSIX_SOURCE
-int	chflags __P((const char *, u_long));
-int	fchflags __P((int, u_long));
-int	fchmod __P((int, mode_t));
-int	lstat __P((const char *, struct stat *));
+int	__stdcall chflags __P((const char *, u_long));
+int	__stdcall fchflags __P((int, u_long));
+int	__stdcall fchmod __P((int, mode_t));
+int	__stdcall lstat __P((const char *, struct stat *));
 #endif
 #define	lstat64	stat
 __END_DECLS

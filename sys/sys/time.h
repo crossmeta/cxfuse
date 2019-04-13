@@ -124,6 +124,13 @@ struct clockinfo {
 #endif
 
 #ifndef _KERNEL
+#ifdef __MINGW32__
+#define	_TIME_T_DEFINED
+//#define	_TIME64_T_DEFINED
+#define	_TIMESPEC_DEFINED
+#define	_TIMEVAL_DEFINED
+#define	_TIMEZONE_DEFINED
+#endif
 #include <time.h>	/* pull in microsoft version!! */
 #include <sys/timeb.h>
 

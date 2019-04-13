@@ -9,6 +9,10 @@
 #ifdef _WIN64
 #include <crtdefs.h>
 #endif
+#ifdef	__MINGW32__
+#include <_mingw.h>
+#include <_mingw_off_t.h>
+#endif
 
 #if defined(__cplusplus)
 extern "C" {
@@ -55,7 +59,13 @@ typedef __int32	ufs_daddr_t;
 #ifdef	_WIN64
 typedef	LONGLONG	off_t;			/* ?<offset> type */
 #else
+#ifndef	__MINGW32__
+#if (defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64))
+typedef quad_t off_t;
+#else
 typedef	long	off_t;			/* ?<offset> type */
+#endif /* _FILE_OFFSET_BITS */
+#endif /* __MINGW32__ */
 #endif	/* _WIN64 */
 typedef	quad_t	off64_t;		/* ?<offset64> type */
 
@@ -73,7 +83,7 @@ typedef	int	key_t;			/* IPC key type		*/
 
 typedef	ulong_t mode_t;			/* file attribute type	*/
 
-typedef	unsigned long	uid_t;		/* UID type		*/
+typedef	unsigned int	uid_t;		/* UID type		*/
 
 typedef	uid_t	gid_t;			/* GID type		*/
 
@@ -85,7 +95,7 @@ typedef unsigned __int64 ino64_t;		/* expanded inode type	*/
 typedef	 __int64	id_t;		/* can hold a gid_t, pid_t, or uid_t */
 typedef	 __int64	rlim_t;		/* resource limit - intentionally */
 
-typedef long	pid_t;			/* process id type	*/
+typedef int	pid_t;			/* process id type	*/
 
 typedef	uint_t	size32_t;		/* len param for string funcs */
 
