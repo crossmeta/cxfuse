@@ -49,7 +49,7 @@ extern "C" {
  * _BSD_VA_LIST_ from <machine/ansi.h> and use it.
  */
 
-void	err(int, const char *, ...);
+void	__stdcall err(int, const char *, ...);
 void	verr(int, const char *, void *);
 void	errc(int, int, const char *, ...);
 void	verrc(int, int, const char *, void *);
@@ -59,7 +59,7 @@ void	warn(const char *, ...);
 void	vwarn(const char *, void *);
 void	warnc(int, const char *, ...);
 void	vwarnc(int, const char *, void *);
-void	warnx(const char *, ...);
+void	__stdcall warnx(const char *, ...);
 void	vwarnx(const char *, void *);
 void	err_set_file(void *);
 void	err_set_exit(void (*)(int));

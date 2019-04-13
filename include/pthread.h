@@ -2,6 +2,10 @@
  * pthread mapping to WIN32 sufficient for FUSE library
  * (C) Copyright 2012 Sammandam, Supramani suprasam@crossmeta.org
  */
+#ifdef __MINGW32__
+#include_next <pthread.h>
+#define	_PTHREAD_H
+#endif
 #ifndef _PTHREAD_H
 #define	_PTHREAD_H
 

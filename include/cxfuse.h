@@ -338,7 +338,7 @@ FUSEAPI int FUSECALL cxfuse_chan_fillhdr(struct cxfuse_chan *ch, char *in, char 
 FUSEAPI int FUSECALL cxfuse_chan_send(struct cxfuse_chan *ch, char *buf, size_t size);
 FUSEAPI void FUSECALL cxfuse_chan_destroy(struct cxfuse_chan *ch);
 
-FUSEAPI struct cxfuse_chan *FUSECALL cxfuse_mount(const char *mountpoint, struct cxfuse_args *args);
+//FUSEAPI struct cxfuse_chan *FUSECALL cxfuse_mount(const char *mountpoint, struct fuse_mount_args *args);
 int cxfuse_mount25(const char *mountpoint, struct cxfuse_args *args);
 
 void cxfuse_unmount25(const char *mountpoint);

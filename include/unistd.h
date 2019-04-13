@@ -86,7 +86,9 @@ sleep(unsigned long x)
 #if __STDC__
 #define isascii		__isascii
 #define toascii		__toascii
+#ifndef	__MINGW32__
 #define alloca		_alloca
+#endif
 #endif
 
 #define popen		_popen
@@ -105,6 +107,8 @@ sleep(unsigned long x)
 #endif
 
 #define creat(p, m)	open(p, O_RDWR|O_CREAT|O_TRUNC, m)
+#define	pread	pread64
+#define	pwrite	pwrite64
 
 extern char *optarg;			/* getopt(3) external variables */
 extern char *__progname;		/* getopt(3) external variables */
@@ -131,21 +135,22 @@ int	chdir(const char *);
 int	fchdir(int);
 int	fchown(int, uid_t, gid_t);
 char	*fflagstostr(u_long);
-FILE	*cxsys_fopen(const char *, const char *);
+FILE 	*__stdcall cxsys_fopen(const char *, const char *);
 #define fopen	cxsys_fopen
 int	fileno(FILE *);
 FILE 	*fdopen(int, char *);
 pid_t	__stdcall fork(void);
-int	fsync(int);
+int	__stdcall fsync(int);
 int 	truncate64(const char *path, off64_t length);
 int	ftruncate(int, off_t);
 int	ftruncate64(int, off64_t);
 char	*getbsize(int *, long *);
 char	*getcwd(char *, size_t);
-int	getdomainname(char *, int);
-gid_t	getegid(void);
+int	__stdcall gethostname(char *, int);
+int	__stdcall getdomainname(char *, int);
+gid_t	__stdcall getegid(void);
 uid_t	geteuid(void);
-gid_t	getgid(void);
+gid_t	__stdcall getgid(void);
 int	getgroups(int, gid_t[]);
 int	getgrouplist(const char *, int, int *, int *);
 char	*getlogin(void);
@@ -161,13 +166,13 @@ void	*memalign(size_t, size_t);
 int	mknod(char *, mode_t, dev_t);
 int	mkstemp(char *);
 int	pipe(int *);
-long	random(void);
-void	srandom(unsigned long);
+long	__stdcall random(void);
+void	__stdcall srandom(unsigned long);
 int	get_random_bytes(char *buf, size_t len);
 int	readlink(const char *, char *, int);
 void 	*reallocf(void *, size_t);
 char	*__stdcall realpath(const char *, char *);
-int	cxsys_rename(const char *, const char *);
+int	__stdcall cxsys_rename(const char *, const char *);
 #define rename cxsys_rename		/* include stdio.h before unistd.h */
 int	rmdir(const char *);
 int	setenv(const char *, const char *, int);
@@ -175,7 +180,7 @@ int	symlink(const char *, const char *);
 void	sync(void);
 int64_t	strtoll(const char *, char **, int);
 void	strmode(int, char *);
-char 	*strsep(char **, char *);
+char 	*__stdcall strsep(char **, char *);
 char	*user_from_uid(uid_t, int);
 char	*group_from_gid(gid_t, int);
 pid_t	getppid(void);
@@ -199,9 +204,9 @@ char 	*vfsmakepath(char *);
 int	vfspath_to_NT(char *,struct _UNICODE_STRING *,struct _UNICODE_STRING *);
 int     vfs_syscall(int, void *, u_long, void *, u_long);
 int 	mapsyserr(u_long);
-ssize_t	write(int, const void *, size_t);
-ssize_t	pread64(int fd, void *buf, size_t count, off64_t offset);
-ssize_t	pwrite64(int fd, void *buf, size_t count, off64_t offset);
+ssize_t	__stdcall write(int, const void *, size_t);
+ssize_t	__stdcall pread64(int fd, void *buf, size_t count, off64_t offset);
+ssize_t	__stdcall pwrite64(int fd, void *buf, size_t count, off64_t offset);
 int 	__system(const char *command);
 void	__stdcall cxsys_exit(int status);
 const char *cxrootdir(void);
