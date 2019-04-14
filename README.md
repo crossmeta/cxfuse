@@ -2,7 +2,7 @@
 
 Crossmeta FUSE (Filesystem in Userspace) is the easiest way to port your favorite FUSE programs to Windows. It is a set of kernel-mode and user mode software that works with Crossmeta Kernel.  The project home page is https://crossmeta.io
 
-#### POSIX File system semantics are provided by ![Crossmeta Kernel](https://github.com/crossmeta/sys/README.md)
+#### POSIX File system semantics are provided by ![Crossmeta Kernel](https://github.com/crossmeta/sys/blob/master/README.md)
 
 This means symbolic links, hardlinks, mount, etc are available readily for easy integration with your FUSE program.
 
@@ -39,6 +39,9 @@ Changed to
 **hello_ll.c**
 The same "Hello World" program using the FUSE Low level API by including `fuse_lowlevel.h`. Once again only changes required was the manual initialzation of `fuse_operations` structure.
 
+Updated Build information from Blog
+* ![Cross Compile using MinGW32](https://www.crossmeta.io/mingw32-cross-compile-to-windows-from-linux/)
+* ![Fuse Examples](https://www.crossmeta.io/crossmeta-fuse-hello-world/)
 
 ## Build Environments
 
