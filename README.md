@@ -19,7 +19,7 @@ Fuse mounts are managed in NT kernel namespace and is available to all Windows a
 ## Examples
 FUSE comes with following examples. 
 **hello.c**
-The "Hello World" sample FUSE program shows uses the high-level API by including fuse.h.  It shows how easy it is to get started. Only changes required was manual initialization, since MSVC is compiler being used here.
+The "Hello World" sample FUSE program shows uses the high-level API by including fuse.h.  It shows how easy it is to get started. Only changes required was manual initialization, since MSVC is compiler being used here. If using MinGW cross compile environment with gcc the following is not applicable.
 
 	static struct fuse_operations hello_oper = {
 		.getattr        = hello_getattr,
@@ -40,8 +40,8 @@ Changed to
 The same "Hello World" program using the FUSE Low level API by including `fuse_lowlevel.h`. Once again only changes required was the manual initialzation of `fuse_operations` structure.
 
 Updated Build information from Blog
-* ![Cross Compile using MinGW32](https://www.crossmeta.io/mingw32-cross-compile-to-windows-from-linux/)
-* ![Fuse Examples](https://www.crossmeta.io/crossmeta-fuse-hello-world/)
+* [Cross Compile using MinGW32](https://www.crossmeta.io/mingw32-cross-compile-to-windows-from-linux/)
+* [Fuse Examples](https://www.crossmeta.io/crossmeta-fuse-hello-world/)
 
 ## Build Environments
 
